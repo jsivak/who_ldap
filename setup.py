@@ -34,7 +34,7 @@ TESTS_REQUIRE = ['nose', 'coverage']
 
 setup(
     name='who_ldap',
-    version='4.0.0',
+    version='4.0.0.post1',
     description='LDAP plugin for repoze.who',
     long_description='\n\n'.join([README, CHANGELOG]),
     classifiers=[
