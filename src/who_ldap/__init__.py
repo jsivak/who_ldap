@@ -218,6 +218,11 @@ class LDAPSearchAuthenticatorPlugin(object):
                 self.search_pattern % escaped_login
             conn.search(self.base_dn, search, self.search_scope)
 
+            # When getting responses from Forest/Trusted AD's we get
+            # extra values in the conn.response, so let's 
+            # remove any "type: searchResRef" items from the list
+            conn.response = [x for x in conn.response if 'searchResEntry' in x.values()]
+
             if len(conn.response) > 1:
                 logger.error('Too many entries found for %s', search)
                 return
